@@ -6,6 +6,10 @@ public class Main {
 
         Relation test = new Relation("csvFile.csv");
         Relation test2 = new Relation("csvFile2.csv");
+        Relation test3 = new Relation("ordini.csv");
+        Relation test4 = new Relation("persone.csv");
+        Relation test5 = new Relation("Prodotti.csv");
+
         System.out.println("test");
 
         Relation selezione = test.Selection(test, "Merluzzo", "cognome");
@@ -20,5 +24,11 @@ public class Main {
         Relation differenza = test.Difference(test, test2);
         System.out.println("test");
 
+        Relation prodottocartesiano = test.CartesianProduct(test3,test4);
+        System.out.println("test");
+
+
+        Relation giunzione = test.Junction(test3, test5, "id_prodotto");
+        System.out.println("test");
     }
 }

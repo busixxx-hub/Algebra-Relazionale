@@ -65,9 +65,7 @@ public class Relation {
             return relazioneOutput;
         }
 
-        for (int i = 0; i < one.rows.size(); i++) {
-            relazioneOutput.rows.add(one.rows.get(i));
-        }
+        relazioneOutput.rows.addAll(one.rows);
 
         for (int j = 0; j < two.rows.size(); j++) {
             if (!(two.rows.get(j).values.equals(relazioneOutput.rows.get(j).values))) {
@@ -93,5 +91,42 @@ public class Relation {
             }
         }
         return relazioneOutput;
+    }
+
+
+    public Relation CartesianProduct(Relation one, Relation two) {
+        Relation relazioneOutput = new Relation();
+        relazioneOutput.header.addAll(one.header);
+        relazioneOutput.header.addAll(two.header);
+
+        for (int i = 0; i < one.rows.size(); i++) {
+            for (int j = 0; j < two.rows.size(); j++) {
+                Row nuovaRiga = new Row();
+
+                nuovaRiga.values.addAll(one.rows.get(i).values);
+                nuovaRiga.values.addAll(two.rows.get(j).values);
+
+                relazioneOutput.rows.add(nuovaRiga);
+            }
+        }
+        return relazioneOutput;
+    }
+
+    public Relation Junction(Relation one, Relation two, String key) {
+
+        Relation relazioneOutput = new Relation();
+        Relation relazioneAppoggio = new Relation();
+
+        relazioneAppoggio = CartesianProduct(one, two);
+
+        relazioneOutput.header.addAll(relazioneAppoggio.header);
+
+        for (int i = 0; i < relazioneAppoggio.rows.size(); i++) {
+            relazioneOutput = Selection(relazioneAppoggio, relazioneAppoggio.rows.get(i).toString(), key);
+        }
+
+        return relazioneOutput;
+
+
     }
 }
