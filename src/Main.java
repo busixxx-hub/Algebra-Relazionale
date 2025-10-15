@@ -24,11 +24,11 @@ public class Main {
         Relation differenza = test.Difference(test, test2);
         System.out.println("test");
 
-        Relation prodottocartesiano = test.CartesianProduct(test3,test4);
+        Relation prodottocartesiano = test.CartesianProduct(test3,test5);
         System.out.println("test");
 
 
-        Relation giunzione = test.Junction(test3, test5, "id_prodotto");
+        Relation giunzione = test.Junction(test3, test5, new String[]{"id_prodotto"});
         System.out.println("test");
     }
 }

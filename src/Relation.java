@@ -112,21 +112,26 @@ public class Relation {
         return relazioneOutput;
     }
 
-    public Relation Junction(Relation one, Relation two, String key) {
-
+    public Relation Junction(Relation one, Relation two, String[] junctionField) {
         Relation relazioneOutput = new Relation();
-        Relation relazioneAppoggio = new Relation();
-
-        relazioneAppoggio = CartesianProduct(one, two);
+        Relation relazioneAppoggio = CartesianProduct(one,two);
+        ArrayList<Integer> indice = new ArrayList<>();
 
         relazioneOutput.header.addAll(relazioneAppoggio.header);
 
-        for (int i = 0; i < relazioneAppoggio.rows.size(); i++) {
-            relazioneOutput = Selection(relazioneAppoggio, relazioneAppoggio.rows.get(i).toString(), key);
+        for(int i = 0; i < relazioneAppoggio.header.size(); i++) {
+            for(int j = 0; j < junctionField.length; j++) {
+                if(relazioneAppoggio.header.get(i).equals(junctionField[j])) {
+                    indice.add(i);
+                }
+            }
         }
 
+        for(int i = 0; i < relazioneAppoggio.rows.size(); i++) {
+            if(relazioneAppoggio.rows.get(i).values.get(indice.get(0)).equals(relazioneAppoggio.rows.get(i).values.get(indice.get(1)))) {
+                relazioneOutput.rows.add(relazioneAppoggio.rows.get(i));
+            }
+        }
         return relazioneOutput;
-
-
     }
 }
