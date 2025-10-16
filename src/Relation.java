@@ -134,4 +134,12 @@ public class Relation {
         }
         return relazioneOutput;
     }
+
+
+    public Relation MaxMin(Relation input, String num1, String num2){
+        Relation relazioneOutput = new Relation();
+        relazioneOutput.header.addAll(input.header);
+
+    }
+
 }

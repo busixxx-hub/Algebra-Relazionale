@@ -9,6 +9,18 @@ public class Main {
         Relation test3 = new Relation("ordini.csv");
         Relation test4 = new Relation("persone.csv");
         Relation test5 = new Relation("Prodotti.csv");
+        Relation test6 = new Relation("city.csv");
+        Relation test7 = new Relation("country.csv");
+        Relation test8 = new Relation("countrylanguage.csv");
+
+
+        Relation trovaEuropee = test.Projection(test7.Selection(test7,"\"Europe\"","\"Continent\""),new ArrayList<>(Arrays.asList("\"Name\"")));
+        System.out.println("test");
+
+        Relation stampaFrancia = test.Projection(test6.Selection(test6,"\"FRA\"","\"CountryCode\""),new ArrayList<>(Arrays.asList("\"Name\"")));
+        System.out.println("test");
+
+        Relation trovaNazioniPopolazione = test.Projection(test7.Selection(test7,"<","\"Continent\""),new ArrayList<>(Arrays.asList("\"Name\"")));
 
         System.out.println("test");
 
@@ -30,5 +42,8 @@ public class Main {
 
         Relation giunzione = test.Junction(test3, test5, new String[]{"id_prodotto"});
         System.out.println("test");
+
+
+
     }
 }
