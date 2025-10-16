@@ -136,10 +136,20 @@ public class Relation {
     }
 
 
-    public Relation MaxMin(Relation input, String num1, String num2){
-        Relation relazioneOutput = new Relation();
-        relazioneOutput.header.addAll(input.header);
-
+    public int togliVirgolette(String str){
+        str = str.replaceAll("\"","");
+        if (str.equals("NULL")){
+            return 0;
+        }
+        return Integer.parseInt(str);
     }
+
+
+
+//    public Relation MaxMin(Relation input, String num1, String num2){
+//        Relation relazioneOutput = new Relation();
+//        relazioneOutput.header.addAll(input.header);
+//
+//    }
 
 }
