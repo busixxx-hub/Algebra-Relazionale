@@ -17,6 +17,7 @@ public class Main {
         Relation trovaEuropee = test.Projection(test7.Selection(test7,"\"Europe\"","\"Continent\""),new ArrayList<>(Arrays.asList("\"Name\"")));
         System.out.println("test");
 
+
         Relation stampaFrancia = test.Projection(test6.Selection(test6,"\"FRA\"","\"CountryCode\""),new ArrayList<>(Arrays.asList("\"Name\"")));
         System.out.println("test");
 
